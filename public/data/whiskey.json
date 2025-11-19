@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "name": "Macallan 12",
+    "rating": 4.8,
+    "reviewCount": 120,
+    "image": "/source/macallan12.png",
+    "tags": ["스페이사이드", "달달"]
+  },
+
+  {
+    "id": 2,
+    "name": "Macallan 12",
+    "rating": 4.8,
+    "reviewCount": 120,
+    "image": "/source/macallan12.png",
+    "tags": ["스페이사이드", "달달"]
+  },
+  {
+    "id": 3,
+    "name": "Macallan 12",
+    "rating": 4.8,
+    "reviewCount": 120,
+    "image": "/source/macallan12.png",
+    "tags": ["스페이사이드", "달달"]
+  },
+  {
+    "id": 4,
+    "name": "Macallan 12",
+    "rating": 4.8,
+    "reviewCount": 120,
+    "image": "/source/macallan12.png",
+    "tags": ["스페이사이드", "달달"]
+  },
+  {
+    "id": 5,
+    "name": "Macallan 12",
+    "rating": 4.8,
+    "reviewCount": 120,
+    "image": "/source/macallan12.png",
+    "tags": ["스페이사이드", "달달"]
+  },
+  {
+    "id": 6,
+    "name": "Macallan 12",
+    "rating": 4.8,
+    "reviewCount": 120,
+    "image": "/source/macallan12.png",
+    "tags": ["스페이사이드", "달달"]
+  },
+  {
+    "id": 7,
+    "name": "Macallan 12",
+    "rating": 4.8,
+    "reviewCount": 120,
+    "image": "/source/macallan12.png",
+    "tags": ["스페이사이드", "달달"]
+  }
+]
+
