@@ -1,0 +1,9 @@
+export { default as Header } from "./Header";
+export { default as Footer } from "./Footer";
+export { default as WhiskeyCard } from "./WhiskeyCard";
+export { default as ReviewCard } from "./ReviewCard";
+export { default as Pagenation } from "./Pagenation";
+export { default as LoginForm } from "./LoginForm";
+export { default as DetailCard } from "./ForDetailPage/DetailCard";
+export { default as WriteReview } from "./ForDetailPage/WriteReview";
+export { default as Profilecard } from "./ForMyPage/Profilecard";
