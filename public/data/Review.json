@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "whiskeyId": 1,
+    "reviewText": "바닐라 향이 은은하고 마시기 편했어요.",
+    "overallRating": 4.5,
+    "tastingNotes": {
+      "smoky": 38,
+      "sweetness": 50,
+      "fruity": 30,
+      "spicy": 80
+    },
+    "author": "RJ",
+    "createdAt": "2025-11-20"
+  },
+  {
+    "id": 2,
+    "whiskeyId": 1,
+    "reviewText": "스파이시한 맛이 강해서 칵테일용으로 좋을 듯!",
+    "overallRating": 4.0,
+    "tastingNotes": {
+      "smoky": 20,
+      "sweetness": 40,
+      "fruity": 45,
+      "spicy": 70
+    },
+    "author": "민준",
+    "createdAt": "2025-11-18"
+  },
+  {
+    "id": 3,
+    "whiskeyId": 2,
+    "reviewText": "프루티함이 확 튀고 향이 오래 남아요.",
+    "overallRating": 4.8,
+    "tastingNotes": {
+      "smoky": 10,
+      "sweetness": 55,
+      "fruity": 80,
+      "spicy": 35
+    },
+    "author": "철수",
+    "createdAt": "2025-11-17"
+  }
+]
