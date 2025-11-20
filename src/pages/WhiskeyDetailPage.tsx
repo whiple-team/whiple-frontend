@@ -1,5 +1,6 @@
 import {Pagenation, WhiskeyCard, BestWhiskeyArr} from "../components";
 import {useState, useEffect} from "react";
+import { useSearchParams } from "react-router-dom";
 import SearchImg from "../assets/Search.svg";
 
 
@@ -16,10 +17,10 @@ interface WhiskeyItem {
   id: number;
   image: string;
 }
-
 const WhiskeyDetail = () => {
   const [whiskies, setWhiskies] = useState<Whiskey[]>([]);
   const [items, setItems] = useState<WhiskeyItem[]>([]);
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     fetch("/data/whiskey.json")
@@ -34,6 +35,17 @@ const WhiskeyDetail = () => {
     .then((data) => setItems(data))
     .catch(console.error);
   }, []);
+
+  //페이지네이션을 위한 슬라이싱 
+  const currentPage = Number(searchParams.get("page") || 1);
+
+  const itemsPerPage = 12;
+
+  const startIdx = (currentPage-1)*itemsPerPage;
+  const endIdx = startIdx + itemsPerPage;
+
+  const currentItems = whiskies.slice(startIdx, endIdx);
+
 
   return (
     <div className="flex flex-col items-center">
@@ -50,7 +62,7 @@ const WhiskeyDetail = () => {
         <BestWhiskeyArr items={items}/>
       </div>
 
-      {/* 상품 레이아웃 */}
+      {/* 상품 목록 */}
       <div className="flex flex-col items-center gap-8 my-8">
         <div className="w-[776px] flex flex-col items-center justify-between">
         
@@ -72,7 +84,7 @@ const WhiskeyDetail = () => {
 
           {/* 위스키 카드 4*4 */}       
           <div className="grid grid-cols-4 gap-4 mt-5">
-            {whiskies.map((item) => (
+            {currentItems.map((item) => (
               <WhiskeyCard key={item.id} {...item} />
             ))}
           </div>
