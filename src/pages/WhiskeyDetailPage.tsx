@@ -2,6 +2,7 @@ import {Pagenation, WhiskeyCard, BestWhiskeyArr} from "../components";
 import {useState, useEffect} from "react";
 import { useSearchParams } from "react-router-dom";
 import SearchImg from "../assets/Search.svg";
+import axios from "axios";
 
 
 interface Whiskey {
@@ -22,18 +23,49 @@ const WhiskeyDetail = () => {
   const [items, setItems] = useState<WhiskeyItem[]>([]);
   const [searchParams] = useSearchParams();
 
+  //fetch ver
+  // useEffect(() => {
+  //   fetch("/data/whiskey.json")
+  //     .then((res) => res.json())
+  //     .then((data) => setWhiskies(data))
+  //     .catch(console.error);
+  // }, []);
+
+  // useEffect(() => {
+  // fetch("/data/BestWhiskey.json")
+  //   .then((res) => res.json())
+  //   .then((data) => setItems(data))
+  //   .catch(console.error);
+  // }, []);
+
+
+  // 전체 위스키 목록 가져오기
   useEffect(() => {
-    fetch("/data/whiskey.json")
-      .then((res) => res.json())
-      .then((data) => setWhiskies(data))
-      .catch(console.error);
+    async function loadWhiskies() {
+      try {
+        const res = await axios.get("/data/whiskey.json");
+        setWhiskies(res.data);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    loadWhiskies();
   }, []);
 
+
+  // 인기 위스키 가져오기
   useEffect(() => {
-  fetch("/data/BestWhiskey.json")
-    .then((res) => res.json())
-    .then((data) => setItems(data))
-    .catch(console.error);
+    async function loadBestWhiskey() {
+      try {
+        const res = await axios.get("/data/BestWhiskey.json");
+        setItems(res.data);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    loadBestWhiskey();
   }, []);
 
   //페이지네이션을 위한 슬라이싱 

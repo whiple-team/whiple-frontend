@@ -20,7 +20,7 @@ export default function ReviewCard(
 ) {
     
     return(
-        <div className="flex-shrink-0 w-[460px] h-[220px] rounded-[8px] p-6 bg-[#F5F5F5] flex flex-col justify-between">
+        <div className="flex-shrink-0 w-[548px] h-[190px] rounded-[8px] p-6 bg-[#F5F5F5] flex flex-col justify-between">
             <div className="justify-between flex">
                 <span className="text-gray-900">{reviewText}</span>
                 <span><StarRating rating={overallRating} /></span> 

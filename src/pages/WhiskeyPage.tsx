@@ -1,6 +1,7 @@
 import { DetailCard, WriteReview, ReviewCard } from "../components";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 interface Whiskey {
   id: number;
@@ -35,22 +36,52 @@ export default function WhiskeyPage() {
     const [whiskey, setWhiskey] = useState<Whiskey | null>(null);
     const [reviews, setReviews] = useState<Review[]>([]);
     
-    //위스키 정보 가져오기
+    //위스키 정보 가져오기 fetch ver
+    // useEffect(() => {
+    //     fetch("/data/whiskey.json")
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         const found = data.find(item => item.id === Number(id));
+    // setWhiskey(found || null);
+    //     });
+    // }, [id]);
+
+    //리뷰 가져오기 fetch ver
+    // useEffect(()=>{
+    //     fetch("/data/Review.json")
+    //     .then(res => res.json())
+    //     .then((data: Review[]) => setReviews(data));
+    // },[]);
+
+    // 위스키 정보 가져오기
     useEffect(() => {
-        fetch("/data/whiskey.json")
-        .then(res => res.json())
-        .then(data => {
-            const found = data.find(item => item.id === Number(id));
-    setWhiskey(found || null);
-        });
+    async function loadWhiskey() {
+        try {
+        const res = await axios.get<Whiskey[]>("/data/whiskey.json");
+        const found = res.data.find((item) => item.id === Number(id));
+        setWhiskey(found || null);
+        } catch (err) {
+        console.error(err);
+        }
+    }
+
+    loadWhiskey();
     }, [id]);
 
-    //리뷰 가져오기
-    useEffect(()=>{
-        fetch("/data/Review.json")
-        .then(res => res.json())
-        .then((data: Review[]) => setReviews(data));
-    },[]);
+
+    // 리뷰 가져오기
+    useEffect(() => {
+    async function loadReviews() {
+        try {
+        const res = await axios.get<Review[]>("/data/Review.json");
+        setReviews(res.data);
+        } catch (err) {
+        console.error(err);
+        }
+    }
+
+    loadReviews();
+    }, []);
 
     //현재 위스키에 달린 리뷰 필터링
     const filteredReviews = reviews.filter(
@@ -75,11 +106,11 @@ export default function WhiskeyPage() {
                 <WriteReview/>
             </div>
             <div className= "flex flex-col justify-center items-center gap-2 mt-4">
-                <div className="flex flex-row">    
+                <div className="w-full flex flex-row gap-2 font-semibold">    
                     <span>테이스팅 노트</span>
-                    <span>{whiskey.reviewCount}</span>
+                    <span>({whiskey.reviewCount})</span>
                 </div>
-                <div className="flex flex-col justify-center items-center gap-4 mt-8">
+                <div className="flex flex-col justify-center items-center gap-4 py-3 mb-10">
                     {filteredReviews.map((review) => (
                         <ReviewCard 
                             key={review.id}
