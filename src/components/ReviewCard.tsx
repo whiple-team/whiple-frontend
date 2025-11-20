@@ -4,7 +4,7 @@ interface ReviewCardProps {
     id: number,
     whiskeyId : number,
     reviewText : string,
-    overallRating: 4.0,
+    overallRating: number,
     tastingNotes: {
       smoky: number,
       sweetness : number,
@@ -12,18 +12,18 @@ interface ReviewCardProps {
       spicy: number
     },
     author: string
-    createdAt: "2025-11-18"
+    createdAt: string
 }
 
 export default function ReviewCard(
-    {reviewText, tastingNotes, author, createdAt}:ReviewCardProps
+    {reviewText, tastingNotes, author, createdAt, overallRating}:ReviewCardProps
 ) {
     
     return(
         <div className="flex-shrink-0 w-[460px] h-[220px] rounded-[8px] p-6 bg-[#F5F5F5] flex flex-col justify-between">
             <div className="justify-between flex">
                 <span className="text-gray-900">{reviewText}</span>
-                <span><StarRating rating={4.5} /></span> 
+                <span><StarRating rating={overallRating} /></span> 
             </div>
             <div className="flex flex-col gap-4">
                 <div className="flex justify-between">
