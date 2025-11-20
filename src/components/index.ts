@@ -7,3 +7,4 @@ export { default as LoginForm } from "./LoginForm";
 export { default as DetailCard } from "./ForDetailPage/DetailCard";
 export { default as WriteReview } from "./ForDetailPage/WriteReview";
 export { default as Profilecard } from "./ForMyPage/Profilecard";
+export { default as BestWhiskeyArr } from "./ForBestWhiskey/BestWhiskeyArr";

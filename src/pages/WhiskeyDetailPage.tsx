@@ -1,6 +1,7 @@
-import {Pagenation, WhiskeyCard} from "../components";
+import {Pagenation, WhiskeyCard, BestWhiskeyArr} from "../components";
 import {useState, useEffect} from "react";
 import SearchImg from "../assets/Search.svg";
+
 
 interface Whiskey {
   id: number;
@@ -11,14 +12,27 @@ interface Whiskey {
   tags: string[];
 }
 
+interface WhiskeyItem {
+  id: number;
+  image: string;
+}
+
 const WhiskeyDetail = () => {
   const [whiskies, setWhiskies] = useState<Whiskey[]>([]);
+  const [items, setItems] = useState<WhiskeyItem[]>([]);
 
   useEffect(() => {
     fetch("/data/whiskey.json")
       .then((res) => res.json())
       .then((data) => setWhiskies(data))
       .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+  fetch("/data/BestWhiskey.json")
+    .then((res) => res.json())
+    .then((data) => setItems(data))
+    .catch(console.error);
   }, []);
 
   return (
@@ -32,7 +46,9 @@ const WhiskeyDetail = () => {
       </div>
       
       {/*인기위스키*/}
-
+      <div className="px-4 py-10">
+        <BestWhiskeyArr items={items}/>
+      </div>
 
       {/* 상품 레이아웃 */}
       <div className="flex flex-col items-center gap-8 my-8">
@@ -50,7 +66,7 @@ const WhiskeyDetail = () => {
             
             <div className="w-[200px] bg-purple-500">
               카테고리
-              {/* 나중에 드롭다운으로 바꿔주셈 */}
+              {/* 나중에 드롭다운으로 바꿔야할듯 */}
             </div>  
           </div>
 
@@ -62,7 +78,7 @@ const WhiskeyDetail = () => {
           </div>
         </div>
 
-        {/*페이지네이션 페이지수 받아오기*/}
+        {/*페이지네이션*/}
         <div>
           <Pagenation totalPages={3} />
         </div>

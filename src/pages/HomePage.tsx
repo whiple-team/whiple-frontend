@@ -4,7 +4,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div className=" bg-[linear-gradient(80deg,#FFFFFF,#9DA8BE)] w-full h-screen flex flex-col gap-3 justify-center items-center">
+    <div className=" bg-[linear-gradient(80deg,#FFFFFF,#9DA8BE)] w-full min-h-full flex flex-col gap-3 justify-center items-center">
       <div className="flex flex-col items-center gap-2">  
         <h1 className="text-4xl font-bold block">WHIPLE</h1>
         <p className="block">당신의 잔에 담긴 이야기를 기록하고 공유하세요</p>
