@@ -36,7 +36,7 @@ const WhiskeyDetail = () => {
   }, []);
 
   return (
-    <>
+    <div className="flex flex-col items-center">
       {/*상단 배너*/}
       <div className="bg-[linear-gradient(80deg,#FFFFFF,#9DA8BE)] w-full h-[160px] flex flex-col items-center justify-center">
         <h1 className="text-2xl font-semibold">위스키 둘러보기</h1>
@@ -46,7 +46,7 @@ const WhiskeyDetail = () => {
       </div>
       
       {/*인기위스키*/}
-      <div className="px-4 py-10">
+      <div className="px-4 py-10 w-[900px] flex flex-row justify-center items-center">
         <BestWhiskeyArr items={items}/>
       </div>
 
@@ -64,7 +64,7 @@ const WhiskeyDetail = () => {
                 <img src={SearchImg} alt="검색" /></button>
             </div> 
             
-            <div className="w-[200px] bg-purple-500">
+            <div className="w-[200px] border border-black">
               카테고리
               {/* 나중에 드롭다운으로 바꿔야할듯 */}
             </div>  
@@ -80,10 +80,10 @@ const WhiskeyDetail = () => {
 
         {/*페이지네이션*/}
         <div>
-          <Pagenation totalPages={3} />
+          <Pagenation data={whiskies} />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

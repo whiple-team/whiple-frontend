@@ -18,6 +18,7 @@ export default function Header({isLoggedIn}: HeaderProps) {
                     src={HomeIcon} 
                     alt="Home"
                 />
+                <span className='font-bold p-4'>WHIPLE</span>
             </Link>
 
             {/* 오른쪽: 메뉴 + 로그인 묶음 */}

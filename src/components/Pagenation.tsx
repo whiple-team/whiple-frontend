@@ -2,8 +2,17 @@ import { useSearchParams } from "react-router-dom";
 import ArrowLeft from "../assets/Arrowleft.svg";
 import ArrowRight from "../assets/ArrowRight.svg";
 
+export interface Whiskey {
+  id: number;
+  name: string;
+  rating: number;
+  reviewCount: number;
+  image: string;
+  tags: string[];
+}
+
 interface PaginationProps {
-  totalPages: number;
+  data: Whiskey[];
 }
 
 function getPageNumbers(currentPage: number, totalPages: number) {
@@ -30,9 +39,12 @@ function getPageNumbers(currentPage: number, totalPages: number) {
   return pages;
 }
 
-export default function Pagination({ totalPages }: PaginationProps) {
+export default function Pagination({data}:PaginationProps) {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = Number(searchParams.get("page") || 1);
+
+  const itemsPerPage = 12;
+  const totalPages = Math.ceil(data.length / itemsPerPage);
 
   const goPage = (p: number) => {
     if (p < 1 || p > totalPages) return;
