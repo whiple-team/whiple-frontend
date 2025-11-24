@@ -18,7 +18,7 @@ export default function LoginForm({onSubmit}:LoginFormProps){
         <div className="gap-3 flex flex-col items-center justify-center">
             
             {/* 탭 */}
-            <Tab state1="로그인" state2="회원가입" selected={tab} onTabChange={changeTab}/>
+            <Tab widthPx={386} state1="로그인" state2="회원가입" selected={tab} onTabChange={changeTab}/>
                         
             {/* 폼 */}
             <form 

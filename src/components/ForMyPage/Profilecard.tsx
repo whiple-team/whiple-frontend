@@ -2,11 +2,11 @@
 
 export default function Profilecard() {
     return(
-        <div className="flex flex-row justify-between items-center w-[478px] h-[92px] m-[67px]">
+        <div className="flex flex-row gap-5 justify-between items-center w-[478px] h-[100px] m-[67px] border border-black">
             {/* 프로필 사진 */}
            <img className="w-[100px] h-[100px]"></img>
             {/* 회원 정보 */}
-            <div className="flex flex-col">
+            <div className="flex flex-col w-[200px]">
                 <p>username</p>
                 <p>user@gmail.com</p>
             <div className="flex gap-4">

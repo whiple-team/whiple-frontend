@@ -4,13 +4,14 @@ interface TabProps {
     state2:string;
     icon2?:string;
     selected:string;
+    widthPx:number;
     onTabChange: (tab:string) => void;
 }
 
-export default function Tab({state1, state2, selected, onTabChange, icon1, icon2}:TabProps){
+export default function Tab({state1, state2, selected, onTabChange, icon1, icon2, widthPx}:TabProps){
 
     return(
-        <div className="w-[386px] bg-[#F5F5F5] rounded-[8px] flex flex-row justify-between"> 
+        <div className={`w-[${widthPx}px] bg-[#F5F5F5] rounded-[8px] flex flex-row justify-between`}> 
             <button
                 onClick={() => onTabChange("tab1")}
                  className={`w-1/2 h-[40px] rounded-[8px]
