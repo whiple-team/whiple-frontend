@@ -1,3 +1,5 @@
+// 이거 나중에 토글로 바꿉시다 ..
+
 import StarInput from "./StarInput";
 import DetailSlider from "./DetailSlider";
 

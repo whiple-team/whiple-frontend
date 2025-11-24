@@ -1,8 +1,16 @@
 import {useState} from "react";
 import InputInfo from "./ForLoginForm/InputInfo";
-export default function LoginForm(){
+
+interface LoginFormProps {
+    onSubmit : (email:string, password: string, username?: string) => void;
+}
+
+export default function LoginForm({onSubmit}:LoginFormProps){
 
     const [tab, setTab] = useState<'login' | 'signup'>('login');
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [username, setUsername] = useState("");
 
     return(
         <div className="gap-3 flex flex-col items-center justify-center">
@@ -22,22 +30,27 @@ export default function LoginForm(){
             </div>
             
             {/* 폼 */}
-            <div className="p-8 gap-4 w-[386px] bg-[#F5F5F595] flex flex-col rounded-[8px] items-center justify-center">
+            <form 
+                onSubmit={(e)=>{
+                    e.preventDefault();
+                    onSubmit(email, password, username);
+                }}
+                className="p-8 gap-4 w-[386px] bg-[#F5F5F595] flex flex-col rounded-[8px] items-center justify-center">
                 {tab === 'login' ? (
                     <>
-                        <InputInfo name="Email" PHvalue="Enter your email" />
-                        <InputInfo name="Password" PHvalue="Enter your password" />
-                        <button className="mt-4 w-full bg-black text-white py-2 rounded-[8px]">Login</button>
+                        <InputInfo onChange={setEmail} value={email} name="Email" type="string" PHvalue="Enter your email" />
+                        <InputInfo onChange={setPassword} value={password} name="Password" type="password" PHvalue="Enter your password" />
+                        <button type="submit" className="mt-4 w-full bg-black text-white py-2 rounded-[8px]">Login</button>
                     </>  
                     ) : (
                     <>
-                        <InputInfo name="Username" PHvalue="Enter your username" />
-                        <InputInfo name="Email" PHvalue="Enter your email" />
-                        <InputInfo name="Password" PHvalue="Enter your password" />
-                        <button className="mt-4 w-full bg-black text-white py-2 rounded-[8px]">Sign Up</button>
+                        <InputInfo onChange={setEmail} value={email} name="Email" type="string" PHvalue="Enter your email" />
+                        <InputInfo onChange={setUsername} value={username} name="Username" type="string" PHvalue="Enter your username" />
+                        <InputInfo onChange={setPassword} value={password} name="Password" type="password" PHvalue="Enter your password" />
+                        <button type="submit" className="mt-4 w-full bg-black text-white py-2 rounded-[8px]">Sign Up</button>
                     </>  
                     )}
-            </div>
+            </form>
         </div>
     );
 }

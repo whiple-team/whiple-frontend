@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 const DefaultLayout = () => {
   return (
     <div className="h-screen flex flex-col">
-      <Header isLoggedIn={false} />
+      <Header />
 
       <main className="flex-1">
         <Outlet />  

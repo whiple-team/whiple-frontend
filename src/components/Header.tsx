@@ -1,13 +1,14 @@
 import HomeIcon from '../assets/HomeIcon.svg';
 import { Link } from "react-router-dom"; 
+import { useAuthStore } from '../store/authStore';
 import { useNavigate } from 'react-router-dom';
 
-interface HeaderProps {
-    isLoggedIn : boolean;
-}
 
-export default function Header({isLoggedIn}: HeaderProps) {
+
+export default function Header() {
     const navigate = useNavigate();
+    const {token} = useAuthStore();
+    const isLoggedIn = !!token;  //토큰 여부로 로그인 상태 판단
     
     return(
         <header className="w-full h-14 bg-[#F5F5F5] px-4 py-9 flex items-center justify-between text-[#1E1E1E]" >
@@ -22,11 +23,10 @@ export default function Header({isLoggedIn}: HeaderProps) {
             </Link>
 
             {/* 오른쪽: 메뉴 + 로그인 묶음 */}
-            {/*여기는 페이지 빌드하고 싹 다 링크로 바꿔주세용*/}
             <div className="flex items-center gap-8">
                 {/* 메뉴 */}
                 <nav className="flex items-center gap-6 text-gray-800 font-medium">
-                    <button onClick={() => navigate("/whiskey-detail")}>위스키</button>
+                    <button onClick={() =>{navigate("/whiskey-detail")}}>위스키</button>
                     <button>커뮤니티</button>
                 </nav>
 
