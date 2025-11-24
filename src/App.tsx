@@ -20,7 +20,7 @@ function App() {
       .catch(() => {
         localStorage.removeItem("token");
       });
-  }, []);
+  }, [setAuth]);
 
   return <Router />;
 }

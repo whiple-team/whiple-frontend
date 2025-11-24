@@ -23,22 +23,6 @@ const WhiskeyDetail = () => {
   const [items, setItems] = useState<WhiskeyItem[]>([]);
   const [searchParams] = useSearchParams();
 
-  //fetch ver
-  // useEffect(() => {
-  //   fetch("/data/whiskey.json")
-  //     .then((res) => res.json())
-  //     .then((data) => setWhiskies(data))
-  //     .catch(console.error);
-  // }, []);
-
-  // useEffect(() => {
-  // fetch("/data/BestWhiskey.json")
-  //   .then((res) => res.json())
-  //   .then((data) => setItems(data))
-  //   .catch(console.error);
-  // }, []);
-
-
   // 전체 위스키 목록 가져오기
   useEffect(() => {
     async function loadWhiskies() {
