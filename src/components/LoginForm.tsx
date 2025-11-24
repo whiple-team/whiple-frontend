@@ -45,8 +45,9 @@ export default function LoginForm({onSubmit}:LoginFormProps){
                     ) : (
                     <>
                         <InputInfo onChange={setEmail} value={email} name="Email" type="string" PHvalue="Enter your email" />
-                        <InputInfo onChange={setUsername} value={username} name="Username" type="string" PHvalue="Enter your username" />
                         <InputInfo onChange={setPassword} value={password} name="Password" type="password" PHvalue="Enter your password" />
+                        <InputInfo onChange={setUsername} value={username} name="Username" type="string" PHvalue="Enter your username" />
+                        
                         <button type="submit" className="mt-4 w-full bg-black text-white py-2 rounded-[8px]">Sign Up</button>
                     </>  
                     )}
