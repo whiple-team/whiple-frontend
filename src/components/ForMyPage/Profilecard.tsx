@@ -1,16 +1,21 @@
-
+import { useAuthStore } from "../../store/authStore";
 
 export default function Profilecard() {
+
+    const user = useAuthStore(state => state.user);
+
+    if (!user) return null;
+
     return(
-        <div className="flex flex-row gap-5 justify-between items-center w-[478px] h-[100px] m-[67px] border border-black">
+        <div className="flex flex-row justify-between items-center w-[550px] p-4 rounded-[8px] bg-[#F5F5F5] ">
             {/* 프로필 사진 */}
            <img className="w-[100px] h-[100px]"></img>
             {/* 회원 정보 */}
             <div className="flex flex-col w-[200px]">
-                <p>username</p>
-                <p>user@gmail.com</p>
+                <p>{user.username}</p>
+                <p>{user.email}</p>
             <div className="flex gap-4">
-                <span>등급</span><span>일반 회원</span>
+                <span>등급</span><span>백엔드에 정보 넣어줘요</span>
             </div>
             </div>
             {/* 수정 버튼 */}

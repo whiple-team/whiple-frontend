@@ -6,7 +6,7 @@ export default function MyPage(){
     const {tab, changeTab} = useTabs("tab1");
 
     return(
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center gap-12 mt-16">
             <Profilecard></Profilecard>
             
             {/* UI 컴포넌트 - 버튼이름 / 눌린 버튼 / setTab(a)=changeTab(a)=onTabChange(a)  */}

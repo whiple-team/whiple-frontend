@@ -1,5 +1,3 @@
-//회원가입 로직 추가해주세요
-
 import LoginForm from "../components/LoginForm";
 import {useNavigate} from "react-router-dom";
 import {useAuthStore} from "../store/authStore"

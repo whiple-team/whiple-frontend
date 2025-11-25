@@ -10,9 +10,8 @@ export interface Whiskey {
   tags: string[];
 }
 
-// 검색 API 호출
+// 검색 API 호출 아직 백엔드 없어서 안됨 ㅜ
 export const searchWhiskey = async (keyword: string) => {
-    //스프링부트 주소 -> 
     const response = await api.get(`/whiskey/search`, {
         params: { keyword },
     });
