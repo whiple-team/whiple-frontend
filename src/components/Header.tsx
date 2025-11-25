@@ -9,7 +9,8 @@ export default function Header() {
     const navigate = useNavigate();
     const {token} = useAuthStore();
     const isLoggedIn = !!token;  //토큰 여부로 로그인 상태 판단
-    
+    const clearAuth = useAuthStore((state)=>state.clearAuth);
+
     return(
         <header className="w-full h-14 bg-[#F5F5F5] px-4 py-9 flex items-center justify-between text-[#1E1E1E]" >
             
@@ -32,11 +33,21 @@ export default function Header() {
 
                 {/* 로그인 or 마이페이지 버튼 */}
                 {isLoggedIn ? (
-                    <button 
-                        onClick={() => navigate("/mypage")}
-                        className="px-4 py-2 bg-black text-white text-[16px] rounded-md hover:bg-gray-800">
-                        마이페이지
-                    </button>
+                    <div className='flex flex-row gap-3'>
+                        <button 
+                            onClick={() => {
+                                clearAuth();
+                                navigate("/")}}
+                            className="px-4 py-2 bg-black text-white text-[16px] rounded-[8px] hover:bg-gray-800">
+                            로그아웃
+                        </button>
+                        
+                        <button 
+                            onClick={() => navigate("/mypage")}
+                            className="px-4 py-2 bg-black text-white text-[16px] rounded-[8px] hover:bg-gray-800">
+                            마이페이지
+                        </button>
+                    </div>
                 ):(
                     <button 
                         onClick={() => navigate("/login")}
