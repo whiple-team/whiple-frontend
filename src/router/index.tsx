@@ -3,6 +3,7 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import DefaultLayout from "../layouts/DefaultLayout";
 import { HomePage, LoginPage, MyPage, WhiskeyDetailPage, WhiskeyPage } from "../pages";
+import SearchResultPage from "../pages/SearchResultPage";
 
 const Router = () => {
   const location = useLocation();    
@@ -17,6 +18,7 @@ const Router = () => {
           <Route path="/whiskey/:id" element={<WhiskeyPage/>}/>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/mypage" element={<MyPage/>} />
+          <Route path="/search/" element={<SearchResultPage/>}/>
         </Route>
         
       </Routes>

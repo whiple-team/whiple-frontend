@@ -9,3 +9,6 @@ export { default as WriteReview } from "./ForDetailPage/WriteReview";
 export { default as Profilecard } from "./ForMyPage/Profilecard";
 export { default as BestWhiskeyArr } from "./ForBestWhiskey/BestWhiskeyArr";
 export {default as Tab } from "./common/Tab";
+export {default as SearchBox} from "./common/SearchBox";
+export {default as TopBanner } from "./common/TopBanner";
+export {default as Modal} from "./common/Modal";

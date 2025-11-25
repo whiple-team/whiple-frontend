@@ -1,8 +1,8 @@
-import {Pagenation, WhiskeyCard, BestWhiskeyArr} from "../components";
+import {Pagenation, WhiskeyCard, BestWhiskeyArr, TopBanner, Modal} from "../components";
 import {useState, useEffect} from "react";
 import { useSearchParams } from "react-router-dom";
-import SearchImg from "../assets/Search.svg";
 import axios from "axios";
+import SearchBox from "../components/common/SearchBox";
 
 
 interface Whiskey {
@@ -22,6 +22,7 @@ const WhiskeyDetail = () => {
   const [whiskies, setWhiskies] = useState<Whiskey[]>([]);
   const [items, setItems] = useState<WhiskeyItem[]>([]);
   const [searchParams] = useSearchParams();
+  const [open, setOpen] = useState(false);
 
   // 전체 위스키 목록 가져오기
   useEffect(() => {
@@ -66,12 +67,7 @@ const WhiskeyDetail = () => {
   return (
     <div className="flex flex-col items-center">
       {/*상단 배너*/}
-      <div className="bg-[linear-gradient(80deg,#FFFFFF,#9DA8BE)] w-full h-[160px] flex flex-col items-center justify-center">
-        <h1 className="text-2xl font-semibold">위스키 둘러보기</h1>
-        <p className="text-gray-600 mt-2">
-          어쭈구 subtitle
-        </p>
-      </div>
+      <TopBanner title="위스키 둘러보기" subtitle="다양한 위스키를 만나보세요"/>
       
       {/*인기위스키*/}
       <div className="px-4 py-10 w-[900px] flex flex-row justify-center items-center">
@@ -84,17 +80,22 @@ const WhiskeyDetail = () => {
         
           {/* 검색창 + 카테고리 */}
           <div className="w-[776px] py-2 flex flex-row items-center justify-between">
-            
-            {/* 검색창 */}
-            <div className="w-[300px] border border-gray-400 bg-white flex flex-row items-center justify-between py-1 px-3 rounded-full">
-              <input placeholder="검색어를 입력하세요" className="w-60" ></input>
-              <button>
-                <img src={SearchImg} alt="검색" /></button>
-            </div> 
-            
-            <div className="w-[200px] border border-black">
-              카테고리
-              {/* 나중에 드롭다운으로 바꿔야할듯 */}
+            <SearchBox></SearchBox>
+            <div className="flex flex-row items-center justify-end w-[200px] border border-black">
+              <button className="flex w-[20px] h-[20px] justify-center items-center bg-slate-300 rounded-full"
+                onClick={()=>setOpen(true)}
+                >
+              </button>
+              <Modal isOpen={open} onClose={()=>setOpen(false)}>
+                <h2 className="text-lg font-bold mb-4">카테고리 추가하기</h2>
+                <p className="mb-4">블라블라</p>
+                <button
+                  onClick={() => setOpen(false)}
+                  className="bg-gray-200 px-3 py-2 rounded"
+                >
+                  닫기
+                </button>
+              </Modal>
             </div>  
           </div>
 
