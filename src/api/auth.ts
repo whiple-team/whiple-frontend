@@ -14,7 +14,7 @@ export const login = async (email: string, password: string) => {
 };
 
 // 회원가입
-export const join = async (username: string, email: string, password: string) => {
+export const join = async (email: string, password: string, username: string) => {
   const res = await api.post("/auth/join", {
     username,
     email,

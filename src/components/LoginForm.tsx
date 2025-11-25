@@ -23,29 +23,34 @@ export default function LoginForm({onLogin, onJoin}:LoginFormProps){
                         
             {/* 폼 */}
             {tab === 'tab1' ? (
-                <form 
-                    onSubmit={(e)=>{
-                        e.preventDefault();
-                        onLogin(email, password);
-                    }}>                    
-                        <InputInfo onChange={setEmail} value={email} name="Email" type="string" PHvalue="Enter your email" />
-                        <InputInfo onChange={setPassword} value={password} name="Password" type="password" PHvalue="Enter your password" />
-                        <button type="submit" className="mt-4 w-full bg-black text-white py-2 rounded-[8px]">Login</button>
-                </form>    
+                <div className="w-[386px] rounded-[8px] bg-[#ffffff60] p-8">    
+                    <form 
+                        onSubmit={(e)=>{
+                            e.preventDefault();
+                            onLogin(email, password);
+                        }}> 
+                        <div className="flex flex-col gap-4">                  
+                            <InputInfo onChange={setEmail} value={email} name="Email" type="string" PHvalue="Enter your email" />
+                            <InputInfo onChange={setPassword} value={password} name="Password" type="password" PHvalue="Enter your password" />
+                            <button type="submit" className="mt-4 w-full bg-black text-white py-2 rounded-[8px]">Login</button>
+                        </div> 
+                    </form> 
+                </div>       
             ) : (
-                <form 
-                    onSubmit={(e)=>{
-                        e.preventDefault();
-                        onJoin(email, password, username);
-                    }}>                    
-
-                        <InputInfo onChange={setEmail} value={email} name="Email" type="string" PHvalue="Enter your email" />
-                        <InputInfo onChange={setPassword} value={password} name="Password" type="password" PHvalue="Enter your password" />
-                        <InputInfo onChange={setUsername} value={username} name="Username" type="string" PHvalue="Enter your username" />
-                        
-                        <button type="submit" className="mt-4 w-full bg-black text-white py-2 rounded-[8px]">Sign Up</button>
-                
-                </form>
+                <div className="w-[386px] rounded-[8px] bg-[#ffffff60] p-8">  
+                    <form 
+                        onSubmit={(e)=>{
+                            e.preventDefault();
+                            onJoin(email, password, username);
+                        }}>                    
+                        <div className="flex flex-col gap-4">  
+                            <InputInfo onChange={setEmail} value={email} name="Email" type="string" PHvalue="Enter your email" />
+                            <InputInfo onChange={setPassword} value={password} name="Password" type="password" PHvalue="Enter your password" />
+                            <InputInfo onChange={setUsername} value={username} name="Username" type="string" PHvalue="Enter your username" />
+                            <button type="submit" className="mt-4 w-full bg-black text-white py-2 rounded-[8px]">Sign Up</button>
+                        </div>    
+                    </form>
+                </div>
             )}
         </div>
     );
